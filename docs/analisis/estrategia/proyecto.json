@@ -1,0 +1,83 @@
+{
+    "component": {
+        "key": "com.universidad:envios-service",
+        "name": "Envios Service",
+        "description": "Calculo del costo de envio por metodo de transporte, peso, distancia, fragilidad y tipo de cliente",
+        "qualifier": "TRK",
+        "measures": [
+            {
+                "metric": "coverage",
+                "value": "100.0",
+                "bestValue": true
+            },
+            {
+                "metric": "complexity",
+                "value": "21"
+            },
+            {
+                "metric": "code_smells",
+                "value": "0",
+                "bestValue": true
+            },
+            {
+                "metric": "duplicated_lines_density",
+                "value": "11.5",
+                "bestValue": false
+            },
+            {
+                "metric": "functions",
+                "value": "6"
+            },
+            {
+                "metric": "sqale_index",
+                "value": "0",
+                "bestValue": true
+            },
+            {
+                "metric": "new_code_smells",
+                "period": {
+                    "index": 1,
+                    "value": "0",
+                    "bestValue": true
+                }
+            },
+            {
+                "metric": "lines_to_cover",
+                "value": "49"
+            },
+            {
+                "metric": "uncovered_conditions",
+                "value": "0",
+                "bestValue": true
+            },
+            {
+                "metric": "branch_coverage",
+                "value": "100.0",
+                "bestValue": true
+            },
+            {
+                "metric": "uncovered_lines",
+                "value": "0",
+                "bestValue": true
+            },
+            {
+                "metric": "cognitive_complexity",
+                "value": "20",
+                "bestValue": false
+            },
+            {
+                "metric": "ncloc",
+                "value": "177"
+            },
+            {
+                "metric": "conditions_to_cover",
+                "value": "32"
+            },
+            {
+                "metric": "line_coverage",
+                "value": "100.0",
+                "bestValue": true
+            }
+        ]
+    }
+}

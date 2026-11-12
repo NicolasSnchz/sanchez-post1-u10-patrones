@@ -1,0 +1,98 @@
+{
+    "paging": {
+        "pageIndex": 1,
+        "pageSize": 100,
+        "total": 2
+    },
+    "baseComponent": {
+        "key": "com.universidad:envios-service",
+        "name": "Envios Service",
+        "description": "Calculo del costo de envio por metodo de transporte, peso, distancia, fragilidad y tipo de cliente",
+        "qualifier": "TRK",
+        "measures": []
+    },
+    "components": [
+        {
+            "key": "com.universidad:envios-service:pom.xml",
+            "name": "pom.xml",
+            "qualifier": "FIL",
+            "path": "pom.xml",
+            "language": "xml",
+            "measures": [
+                {
+                    "metric": "ncloc",
+                    "value": "68"
+                }
+            ]
+        },
+        {
+            "key": "com.universidad:envios-service:src/main/java/com/universidad/enviosservice/service/ServicioCalculoEnvio.java",
+            "name": "ServicioCalculoEnvio.java",
+            "qualifier": "FIL",
+            "path": "src/main/java/com/universidad/enviosservice/service/ServicioCalculoEnvio.java",
+            "language": "java",
+            "measures": [
+                {
+                    "metric": "branch_coverage",
+                    "value": "18.4",
+                    "bestValue": false
+                },
+                {
+                    "metric": "code_smells",
+                    "value": "1",
+                    "bestValue": false
+                },
+                {
+                    "metric": "cognitive_complexity",
+                    "value": "32",
+                    "bestValue": false
+                },
+                {
+                    "metric": "complexity",
+                    "value": "20"
+                },
+                {
+                    "metric": "conditions_to_cover",
+                    "value": "38"
+                },
+                {
+                    "metric": "coverage",
+                    "value": "21.3",
+                    "bestValue": false
+                },
+                {
+                    "metric": "functions",
+                    "value": "1"
+                },
+                {
+                    "metric": "line_coverage",
+                    "value": "23.8",
+                    "bestValue": false
+                },
+                {
+                    "metric": "lines_to_cover",
+                    "value": "42"
+                },
+                {
+                    "metric": "ncloc",
+                    "value": "64"
+                },
+                {
+                    "metric": "sqale_index",
+                    "value": "20",
+                    "bestValue": false
+                },
+                {
+                    "metric": "uncovered_conditions",
+                    "value": "31",
+                    "bestValue": false
+                },
+                {
+                    "metric": "uncovered_lines",
+                    "value": "32",
+                    "bestValue": false
+                }
+            ]
+        }
+    ]
+}

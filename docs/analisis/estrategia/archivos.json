@@ -1,0 +1,355 @@
+{
+    "paging": {
+        "pageIndex": 1,
+        "pageSize": 100,
+        "total": 7
+    },
+    "baseComponent": {
+        "key": "com.universidad:envios-service",
+        "name": "Envios Service",
+        "description": "Calculo del costo de envio por metodo de transporte, peso, distancia, fragilidad y tipo de cliente",
+        "qualifier": "TRK",
+        "measures": []
+    },
+    "components": [
+        {
+            "key": "com.universidad:envios-service:src/main/java/com/universidad/enviosservice/estrategia/EnvioEstandarStrategy.java",
+            "name": "EnvioEstandarStrategy.java",
+            "qualifier": "FIL",
+            "path": "src/main/java/com/universidad/enviosservice/estrategia/EnvioEstandarStrategy.java",
+            "language": "java",
+            "measures": [
+                {
+                    "metric": "branch_coverage",
+                    "value": "100.0",
+                    "bestValue": true
+                },
+                {
+                    "metric": "cognitive_complexity",
+                    "value": "4",
+                    "bestValue": false
+                },
+                {
+                    "metric": "complexity",
+                    "value": "4"
+                },
+                {
+                    "metric": "conditions_to_cover",
+                    "value": "6"
+                },
+                {
+                    "metric": "coverage",
+                    "value": "100.0",
+                    "bestValue": true
+                },
+                {
+                    "metric": "duplicated_lines_density",
+                    "value": "60.0",
+                    "bestValue": false
+                },
+                {
+                    "metric": "functions",
+                    "value": "1"
+                },
+                {
+                    "metric": "line_coverage",
+                    "value": "100.0",
+                    "bestValue": true
+                },
+                {
+                    "metric": "lines_to_cover",
+                    "value": "9"
+                },
+                {
+                    "metric": "ncloc",
+                    "value": "18"
+                },
+                {
+                    "metric": "uncovered_conditions",
+                    "value": "0",
+                    "bestValue": true
+                },
+                {
+                    "metric": "uncovered_lines",
+                    "value": "0",
+                    "bestValue": true
+                }
+            ]
+        },
+        {
+            "key": "com.universidad:envios-service:src/main/java/com/universidad/enviosservice/estrategia/EnvioExpressStrategy.java",
+            "name": "EnvioExpressStrategy.java",
+            "qualifier": "FIL",
+            "path": "src/main/java/com/universidad/enviosservice/estrategia/EnvioExpressStrategy.java",
+            "language": "java",
+            "measures": [
+                {
+                    "metric": "branch_coverage",
+                    "value": "100.0",
+                    "bestValue": true
+                },
+                {
+                    "metric": "cognitive_complexity",
+                    "value": "4",
+                    "bestValue": false
+                },
+                {
+                    "metric": "complexity",
+                    "value": "4"
+                },
+                {
+                    "metric": "conditions_to_cover",
+                    "value": "6"
+                },
+                {
+                    "metric": "coverage",
+                    "value": "100.0",
+                    "bestValue": true
+                },
+                {
+                    "metric": "duplicated_lines_density",
+                    "value": "60.0",
+                    "bestValue": false
+                },
+                {
+                    "metric": "functions",
+                    "value": "1"
+                },
+                {
+                    "metric": "line_coverage",
+                    "value": "100.0",
+                    "bestValue": true
+                },
+                {
+                    "metric": "lines_to_cover",
+                    "value": "9"
+                },
+                {
+                    "metric": "ncloc",
+                    "value": "18"
+                },
+                {
+                    "metric": "uncovered_conditions",
+                    "value": "0",
+                    "bestValue": true
+                },
+                {
+                    "metric": "uncovered_lines",
+                    "value": "0",
+                    "bestValue": true
+                }
+            ]
+        },
+        {
+            "key": "com.universidad:envios-service:src/main/java/com/universidad/enviosservice/estrategia/EnvioInternacionalStrategy.java",
+            "name": "EnvioInternacionalStrategy.java",
+            "qualifier": "FIL",
+            "path": "src/main/java/com/universidad/enviosservice/estrategia/EnvioInternacionalStrategy.java",
+            "language": "java",
+            "measures": [
+                {
+                    "metric": "branch_coverage",
+                    "value": "100.0",
+                    "bestValue": true
+                },
+                {
+                    "metric": "cognitive_complexity",
+                    "value": "4",
+                    "bestValue": false
+                },
+                {
+                    "metric": "complexity",
+                    "value": "4"
+                },
+                {
+                    "metric": "conditions_to_cover",
+                    "value": "6"
+                },
+                {
+                    "metric": "coverage",
+                    "value": "100.0",
+                    "bestValue": true
+                },
+                {
+                    "metric": "functions",
+                    "value": "1"
+                },
+                {
+                    "metric": "line_coverage",
+                    "value": "100.0",
+                    "bestValue": true
+                },
+                {
+                    "metric": "lines_to_cover",
+                    "value": "9"
+                },
+                {
+                    "metric": "ncloc",
+                    "value": "18"
+                },
+                {
+                    "metric": "uncovered_conditions",
+                    "value": "0",
+                    "bestValue": true
+                },
+                {
+                    "metric": "uncovered_lines",
+                    "value": "0",
+                    "bestValue": true
+                }
+            ]
+        },
+        {
+            "key": "com.universidad:envios-service:src/main/java/com/universidad/enviosservice/estrategia/EnvioOvernightStrategy.java",
+            "name": "EnvioOvernightStrategy.java",
+            "qualifier": "FIL",
+            "path": "src/main/java/com/universidad/enviosservice/estrategia/EnvioOvernightStrategy.java",
+            "language": "java",
+            "measures": [
+                {
+                    "metric": "branch_coverage",
+                    "value": "100.0",
+                    "bestValue": true
+                },
+                {
+                    "metric": "cognitive_complexity",
+                    "value": "4",
+                    "bestValue": false
+                },
+                {
+                    "metric": "complexity",
+                    "value": "4"
+                },
+                {
+                    "metric": "conditions_to_cover",
+                    "value": "6"
+                },
+                {
+                    "metric": "coverage",
+                    "value": "100.0",
+                    "bestValue": true
+                },
+                {
+                    "metric": "functions",
+                    "value": "1"
+                },
+                {
+                    "metric": "line_coverage",
+                    "value": "100.0",
+                    "bestValue": true
+                },
+                {
+                    "metric": "lines_to_cover",
+                    "value": "9"
+                },
+                {
+                    "metric": "ncloc",
+                    "value": "18"
+                },
+                {
+                    "metric": "uncovered_conditions",
+                    "value": "0",
+                    "bestValue": true
+                },
+                {
+                    "metric": "uncovered_lines",
+                    "value": "0",
+                    "bestValue": true
+                }
+            ]
+        },
+        {
+            "key": "com.universidad:envios-service:src/main/java/com/universidad/enviosservice/estrategia/EstrategiaEnvio.java",
+            "name": "EstrategiaEnvio.java",
+            "qualifier": "FIL",
+            "path": "src/main/java/com/universidad/enviosservice/estrategia/EstrategiaEnvio.java",
+            "language": "java",
+            "measures": [
+                {
+                    "metric": "complexity",
+                    "value": "0"
+                },
+                {
+                    "metric": "functions",
+                    "value": "1"
+                },
+                {
+                    "metric": "ncloc",
+                    "value": "5"
+                }
+            ]
+        },
+        {
+            "key": "com.universidad:envios-service:pom.xml",
+            "name": "pom.xml",
+            "qualifier": "FIL",
+            "path": "pom.xml",
+            "language": "xml",
+            "measures": [
+                {
+                    "metric": "ncloc",
+                    "value": "68"
+                }
+            ]
+        },
+        {
+            "key": "com.universidad:envios-service:src/main/java/com/universidad/enviosservice/service/ServicioCalculoEnvio.java",
+            "name": "ServicioCalculoEnvio.java",
+            "qualifier": "FIL",
+            "path": "src/main/java/com/universidad/enviosservice/service/ServicioCalculoEnvio.java",
+            "language": "java",
+            "measures": [
+                {
+                    "metric": "branch_coverage",
+                    "value": "100.0",
+                    "bestValue": true
+                },
+                {
+                    "metric": "cognitive_complexity",
+                    "value": "4",
+                    "bestValue": false
+                },
+                {
+                    "metric": "complexity",
+                    "value": "5"
+                },
+                {
+                    "metric": "conditions_to_cover",
+                    "value": "8"
+                },
+                {
+                    "metric": "coverage",
+                    "value": "100.0",
+                    "bestValue": true
+                },
+                {
+                    "metric": "functions",
+                    "value": "1"
+                },
+                {
+                    "metric": "line_coverage",
+                    "value": "100.0",
+                    "bestValue": true
+                },
+                {
+                    "metric": "lines_to_cover",
+                    "value": "13"
+                },
+                {
+                    "metric": "ncloc",
+                    "value": "32"
+                },
+                {
+                    "metric": "uncovered_conditions",
+                    "value": "0",
+                    "bestValue": true
+                },
+                {
+                    "metric": "uncovered_lines",
+                    "value": "0",
+                    "bestValue": true
+                }
+            ]
+        }
+    ]
+}

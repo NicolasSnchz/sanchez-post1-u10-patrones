@@ -6,23 +6,23 @@
     },
     "analyses": [
         {
-            "key": "fa936b81-0e10-456a-969b-a8ac08f6a2a6",
-            "date": "2026-11-12T06:23:48+0000",
+            "key": "12e1f153-4b0f-49c0-bfd0-d44ecb0379f5",
+            "date": "2026-11-12T06:56:48+0000",
             "events": [
                 {
-                    "key": "b0ee2e95-80fb-47c0-91c1-b1824879a730",
+                    "key": "50ded416-7a90-429d-969f-e9cd59b3407c",
                     "category": "SQ_UPGRADE",
                     "name": "26.11.0.134175"
                 },
                 {
-                    "key": "9546a991-db1e-4f3a-a9a9-412c71785481",
+                    "key": "1f14b36b-9a36-490f-b5b4-f2262629caa1",
                     "category": "VERSION",
                     "name": "1.0"
                 }
             ],
             "projectVersion": "1.0",
             "manualNewCodePeriodBaseline": false,
-            "revision": "6587f8ac263e7843b528a75000f94427cf79fa62",
+            "revision": "0caa858fed8b712f5e14ac8141e38171d7cfed20",
             "detectedCI": "Github Actions",
             "relativePathFromScmRoot": "../../../../../../../tmp/inicial"
         }

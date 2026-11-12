@@ -1,0 +1,42 @@
+{
+    "name": "Est\u00e1ndar Laboratorio",
+    "conditions": [
+        {
+            "id": "ed36aa95-e897-47fe-af33-658dc05d9896",
+            "metric": "coverage",
+            "op": "LT",
+            "error": "70",
+            "isCaycCondition": false
+        },
+        {
+            "id": "28029692-c064-4d06-874b-645231eb3a98",
+            "metric": "new_code_smells",
+            "op": "GT",
+            "error": "0",
+            "isCaycCondition": false
+        },
+        {
+            "id": "98c2c36f-02c6-48e4-93aa-6855d80460cb",
+            "metric": "duplicated_lines_density",
+            "op": "GT",
+            "error": "5",
+            "isCaycCondition": false
+        }
+    ],
+    "isBuiltIn": false,
+    "actions": {
+        "rename": true,
+        "setAsDefault": true,
+        "copy": true,
+        "associateProjects": true,
+        "delete": true,
+        "manageConditions": true,
+        "delegate": true,
+        "manageAiCodeAssurance": false
+    },
+    "caycStatus": "non-compliant",
+    "isDefault": false,
+    "hasStandardConditions": true,
+    "hasMQRConditions": false,
+    "isAiCodeSupported": false
+}

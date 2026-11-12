@@ -1,0 +1,42 @@
+{
+    "projectStatus": {
+        "status": "ERROR",
+        "conditions": [
+            {
+                "status": "OK",
+                "metricKey": "coverage",
+                "comparator": "LT",
+                "errorThreshold": "70",
+                "actualValue": "100.0"
+            },
+            {
+                "status": "ERROR",
+                "metricKey": "duplicated_lines_density",
+                "comparator": "GT",
+                "errorThreshold": "5",
+                "actualValue": "11.5"
+            },
+            {
+                "status": "OK",
+                "metricKey": "new_code_smells",
+                "comparator": "GT",
+                "errorThreshold": "0",
+                "actualValue": "0"
+            },
+            {
+                "status": "OK",
+                "metricKey": "new_violations",
+                "comparator": "GT",
+                "errorThreshold": "0",
+                "actualValue": "0"
+            }
+        ],
+        "ignoredConditions": false,
+        "period": {
+            "mode": "SPECIFIC_ANALYSIS",
+            "date": "2026-11-12T06:39:32+0000",
+            "parameter": "d449ffb7-d02f-4e2f-aa4d-d6ea21a7afa7"
+        },
+        "caycStatus": "over-compliant"
+    }
+}
