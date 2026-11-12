@@ -1,0 +1,16 @@
+Se duplica el perfil: Sonar way core
+Perfiles de Java disponibles: Sonar way core, Sonar way extended, Sonar way comprehensive, Sonar agentic AI
+La regla java:S1541 se llama: Methods should not be too complex
+Su parametro de umbral se llama: Threshold
+Quality Profile "Estándar Laboratorio" asignado con java:S1541 en 10
+Condicion predeterminada 770f4aea-caef-49ae-8f0a-7c80d424ef4a eliminada
+Condicion predeterminada 3e86a0ff-6f6d-410b-9e6f-c72102360e66 eliminada
+Condicion predeterminada b3d3e68d-b709-4711-9462-638c33f3535f eliminada
+Condicion predeterminada 9e058319-52ca-4631-a82d-a497409522ba eliminada
+Condicion: coverage LT 70
+Condicion: new_code_smells GT 0
+Condicion: duplicated_lines_density GT 5
+Quality Gate "Estándar Laboratorio" asignado con estas condiciones:
+  coverage LT 70
+  new_code_smells GT 0
+  duplicated_lines_density GT 5

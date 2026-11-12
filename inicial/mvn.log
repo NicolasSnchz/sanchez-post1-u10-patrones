@@ -1,0 +1,182 @@
+[INFO] Scanning for projects...
+[INFO] Loaded 24457 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO] 
+[INFO] -------------------< com.universidad:envios-service >-------------------
+[INFO] Building Envios Service 1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] 
+[INFO] --- clean:3.5.0:clean (default-clean) @ envios-service ---
+[INFO] 
+[INFO] --- jacoco:0.8.13:prepare-agent (prepare-agent) @ envios-service ---
+[INFO] argLine set to -javaagent:/home/runner/.m2/repository/org/jacoco/org.jacoco.agent/0.8.13/org.jacoco.agent-0.8.13-runtime.jar=destfile=/tmp/inicial/target/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ envios-service ---
+[INFO] skip non existing resourceDirectory /tmp/inicial/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ envios-service ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 1 source file with javac [debug release 21] to target/classes
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ envios-service ---
+[INFO] skip non existing resourceDirectory /tmp/inicial/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ envios-service ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [debug release 21] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.5.2:test (default-test) @ envios-service ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.universidad.enviosservice.service.ServicioCalculoEnvioTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.058 s -- in com.universidad.enviosservice.service.ServicioCalculoEnvioTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jar:3.5.1:jar (default-jar) @ envios-service ---
+[INFO] Building jar: /tmp/inicial/target/envios-service-1.0.jar
+[INFO] 
+[INFO] --- jacoco:0.8.13:report (report) @ envios-service ---
+[INFO] Loading execution data file /tmp/inicial/target/jacoco.exec
+[INFO] Analyzed bundle 'Envios Service' with 1 classes
+[INFO] 
+[INFO] -------------------< com.universidad:envios-service >-------------------
+[INFO] Building Envios Service 1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- sonar:5.1.0.4751:sonar (default-cli) @ envios-service ---
+[INFO] Java 21.0.13 Eclipse Adoptium (64-bit)
+[INFO] Linux 7.0.0-1017-azure (amd64)
+[INFO] User cache: /home/runner/.sonar/cache
+[INFO] Communicating with SonarQube Community Build 26.11.0.134175
+[INFO] JRE provisioning: os[linux], arch[x86_64]
+[WARNING] Plugin is modifying testCompileSourceRoots through iterator.remove(), which will not work in Maven 4.0.0. Use MavenProject.addTestCompileSourceRoot()/removeTestCompileSourceRoot() methods instead. If using a plugin, please upgrade to the latest version or report the issue to the plugin maintainer. To disable these warnings, set -Dmaven.project.sourceRoots.warningsDisabled=true on the command line, in the .mvn/maven.config file, or in project POM properties.
+[INFO] Starting SonarScanner Engine...
+[INFO] Java 21.0.13 Eclipse Adoptium (64-bit)
+[INFO] Load global settings
+[INFO] Load global settings (done) | time=80ms
+[INFO] Server id: 147B411E-AaHOiofl6wgijaAhHay9
+[INFO] Found an active CI vendor: 'Github Actions'
+[INFO] Loading required plugins
+[INFO] Load plugins index
+[INFO] Load plugins index (done) | time=45ms
+[INFO] Load/download plugins
+[INFO] Load/download plugins (done) | time=263ms
+[INFO] Load project settings for component key: 'com.universidad:envios-service'
+[INFO] Load project settings for component key: 'com.universidad:envios-service' (done) | time=18ms
+[INFO] Process project properties
+[INFO] Process project properties (done) | time=8ms
+[INFO] Project key: com.universidad:envios-service
+[INFO] Base dir: /tmp/inicial
+[INFO] Working dir: /tmp/inicial/target/sonar
+[INFO] Load quality profiles
+[INFO] Load quality profiles (done) | time=106ms
+[INFO] Load active rules
+[INFO] Load active rules (done) | time=307ms
+[INFO] Load analysis cache
+[INFO] Load analysis cache (404) | time=20ms
+[INFO] Preprocessing files...
+[INFO] 2 languages detected in 3 preprocessed files (done) | time=26ms
+[INFO] 0 files ignored because of scm ignore settings
+[INFO] Loading plugins for detected languages
+[INFO] Load/download plugins
+[INFO] Load/download plugins (done) | time=542ms
+[INFO] Load project repositories
+[INFO] Load project repositories (done) | time=73ms
+[INFO] Indexing files...
+[INFO] Project configuration:
+[INFO] 3 files indexed (done) | time=7ms
+[INFO] Quality profile for java: Sonar way core
+[INFO] Quality profile for xml: Sonar way core
+[INFO] ------------- Run sensors on module Envios Service
+[INFO] Load metrics repository
+[INFO] Load metrics repository (done) | time=22ms
+[INFO] Sensor IaC YAML File Type Classification Sensor [iac]
+[INFO] Sensor IaC YAML File Type Classification Sensor [iac] (done) | time=2ms
+[INFO] Sensor JavaSensor [java]
+[INFO] Configured Java source version (sonar.java.source): 21, preview features enabled (sonar.java.enablePreview): false
+[INFO] Server-side caching is enabled. The Java analyzer will not try to leverage data from a previous analysis.
+[INFO] Using ECJ batch to parse 1 Main java source files with batch size 209 KB.
+[INFO] Starting batch processing.
+[INFO] The Java analyzer cannot skip unchanged files in this context. A full analysis is performed for all files.
+[INFO] 100% analyzed
+[INFO] Batch processing: Done.
+[INFO] Did not optimize analysis for any files, performed a full analysis for all 1 files.
+[INFO] Using ECJ batch to parse 1 Test java source files with batch size 209 KB.
+[INFO] Starting batch processing.
+[INFO] 100% analyzed
+[INFO] Batch processing: Done.
+[INFO] Did not optimize analysis for any files, performed a full analysis for all 1 files.
+[INFO] No "Generated" source files to scan.
+[INFO] Sensor JavaSensor [java] (done) | time=697ms
+[INFO] Sensor JaCoCo XML Report Importer [jacoco]
+[INFO] Importing 1 report(s). Turn your logs in debug mode in order to see the exhaustive list.
+[INFO] Sensor JaCoCo XML Report Importer [jacoco] (done) | time=14ms
+[INFO] Sensor IaC hadolint report Sensor [iac]
+[INFO] Sensor IaC hadolint report Sensor [iac] (done) | time=0ms
+[INFO] Sensor Java Config Sensor [iac]
+[INFO] There are no files to be analyzed for the Java language
+[INFO] Sensor Java Config Sensor [iac] (done) | time=0ms
+[INFO] Sensor IaC Docker Sensor [iac]
+[INFO] There are no files to be analyzed for the Docker language
+[INFO] Sensor IaC Docker Sensor [iac] (done) | time=1ms
+[INFO] Sensor SurefireSensor [java]
+[INFO] parsing [/tmp/inicial/target/surefire-reports]
+[INFO] Sensor SurefireSensor [java] (done) | time=26ms
+[INFO] Sensor XML Sensor [xml]
+[INFO] 1 source file to be analyzed
+[INFO] 1/1 source file has been analyzed
+[INFO] Sensor XML Sensor [xml] (done) | time=76ms
+[INFO] Sensor TextAndSecretsSensor [text]
+[INFO] Available processors: 4
+[INFO] Using 4 threads for analysis.
+[INFO] Start fetching files for the text and secrets analysis
+[INFO] Using Git CLI to retrieve dirty files
+[INFO] Retrieving language associated files and files included via "sonar.text.inclusions" that are tracked by git
+[INFO] Starting the text and secrets analysis
+[INFO] 3 source files to be analyzed for the text and secrets analysis
+[INFO] 3/3 source files have been analyzed for the text and secrets analysis
+[INFO] Sensor TextAndSecretsSensor [text] (done) | time=248ms
+[INFO] ------------- Run sensors on project
+[INFO] Sensor JaCoCo Aggregate XML Report Importer [jacoco]
+[INFO] Sensor JaCoCo Aggregate XML Report Importer [jacoco] (done) | time=0ms
+[INFO] Sensor IaC Project Sensor [iac]
+[INFO] Sensor IaC Project Sensor [iac] (done) | time=0ms
+[INFO] Sensor Java SpringContextModelSensor [java]
+[INFO] Sensor Java SpringContextModelSensor [java] (done) | time=0ms
+[INFO] Sensor Zero Coverage Sensor
+[INFO] Sensor Zero Coverage Sensor (done) | time=0ms
+[INFO] Sensor Java CPD Block Indexer
+[INFO] Sensor Java CPD Block Indexer (done) | time=8ms
+[INFO] Sensor JavaProjectSensor [java]
+[INFO] Sensor JavaProjectSensor [java] (done) | time=1ms
+[INFO] ------------- Gather SCA dependencies on project
+[INFO] Dependency analysis skipped
+[INFO] SCM Publisher SCM provider for this project is: git
+[INFO] SCM Publisher 3 source files to be analyzed
+[INFO] SCM Publisher 3/3 source files have been analyzed (done) | time=240ms
+[INFO] CPD Executor Calculating CPD for 1 file
+[INFO] CPD Executor CPD calculation finished (done) | time=3ms
+[INFO] SCM revision ID '0caa858fed8b712f5e14ac8141e38171d7cfed20'
+[INFO] Analysis report generated in 92ms, dir size=161.0 kB
+[INFO] Analysis report compressed in 11ms, zip size=24.5 kB
+[INFO] Analysis report uploaded in 84ms
+[INFO] ANALYSIS SUCCESSFUL, you can find the results at: http://localhost:9000/dashboard?id=com.universidad%3Aenvios-service
+[INFO] Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+[INFO] More about the report processing at http://localhost:9000/api/ce/task?id=d88789a5-5613-4a3a-b013-01da65135bc4
+[INFO] Analysis total time: 4.759 s
+[INFO] SonarScanner Engine completed successfully
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  11.907 s
+[INFO] Finished at: 2026-11-12T06:56:52Z
+[INFO] ------------------------------------------------------------------------
