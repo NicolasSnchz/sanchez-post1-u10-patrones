@@ -1,0 +1,103 @@
+# Flujo temporal: ejecuta los analisis reales de SonarQube y JaCoCo y publica metricas y capturas
+# en la rama evidencias. Se retira cuando las capturas ya estan en docs/.
+name: Evidencias del analisis (temporal)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  CLAVE_SONAR: Envios-Laboratorio-2026
+  PROYECTO: com.universidad:envios-service
+
+jobs:
+  analisis:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-java@v5
+        with:
+          java-version: "21"
+          distribution: "temurin"
+          cache: maven
+
+      - name: Levantar SonarQube Community en Docker
+        run: |
+          sudo sysctl -w vm.max_map_count=262144
+          docker run -d --name sonarqube -p 9000:9000 -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true sonarqube:community
+          timeout 300 bash -c 'until curl -s localhost:9000/api/system/status | grep -q "\"status\":\"UP\""; do sleep 5; done'
+          curl -s localhost:9000/api/server/version > version-sonarqube.txt
+          echo "SonarQube $(cat version-sonarqube.txt)"
+
+      - name: Preparar proyecto y token
+        run: bash scripts/sonarqube/preparar.sh
+
+      - name: Instalar Playwright
+        run: |
+          mkdir -p /tmp/pw && cd /tmp/pw && npm init -y >/dev/null && npm install --silent playwright@1.49.1
+          npx playwright install --with-deps chromium
+
+      - name: Analisis inicial (Parte 1, perfil Sonar way)
+        run: |
+          mkdir -p evidencias/inicial && mv version-sonarqube.txt evidencias/
+          INICIAL=$(git log --format=%H --grep='^test: agregar suite inicial' -1)
+          echo "$INICIAL" > evidencias/inicial/commit.txt
+          git worktree add /tmp/inicial "$INICIAL"
+          (cd /tmp/inicial && mvn -B --no-transfer-progress clean verify sonar:sonar -Dsonar.token="$TOKEN_SONAR") 2>&1 \
+            | tee evidencias/inicial/mvn.log
+          bash scripts/sonarqube/esperar-analisis.sh
+          bash .github/evidencias/exportar.sh inicial
+          cp /tmp/inicial/target/site/jacoco/jacoco.xml evidencias/inicial/
+          python3 .github/evidencias/terminal.py evidencias/inicial/mvn.log \
+            "mvn clean verify sonar:sonar  (version inicial, GitHub Actions + SonarQube en Docker)" evidencias/inicial/mvn-sonar.html
+          NODE_PATH=/tmp/pw/node_modules node .github/evidencias/capturar.js inicial /tmp/inicial/target/site/jacoco
+
+      - name: Quality Profile y Quality Gate, y la regla S1541 sobre la version inicial
+        if: hashFiles('src/main/java/com/universidad/enviosservice/estrategia/**') != ''
+        run: |
+          mkdir -p evidencias/regla
+          bash scripts/sonarqube/estandar-laboratorio.sh 2>&1 | tee evidencias/regla/configuracion.log
+          (cd /tmp/inicial && mvn -B --no-transfer-progress sonar:sonar -Dsonar.token="$TOKEN_SONAR") 2>&1 \
+            | tee evidencias/regla/mvn.log
+          bash scripts/sonarqube/esperar-analisis.sh
+          bash .github/evidencias/exportar.sh regla
+          NODE_PATH=/tmp/pw/node_modules node .github/evidencias/capturar.js regla /tmp/inicial/target/site/jacoco
+          RAMA=$(curl -sf -u "admin:$CLAVE_SONAR" "localhost:9000/api/project_branches/list?project=$PROYECTO" | jq -r '.branches[0].name')
+          ANALISIS=$(curl -sf -u "admin:$CLAVE_SONAR" "localhost:9000/api/project_analyses/search?project=$PROYECTO&ps=1" | jq -r '.analyses[0].key')
+          curl -sf -u "admin:$CLAVE_SONAR" -X POST "localhost:9000/api/new_code_periods/set" \
+            --data-urlencode "project=$PROYECTO" --data-urlencode "branch=$RAMA" \
+            --data-urlencode "type=SPECIFIC_ANALYSIS" --data-urlencode "value=$ANALISIS"
+          echo "Codigo nuevo desde el analisis $ANALISIS de la rama $RAMA" | tee evidencias/regla/codigo-nuevo.txt
+
+      - name: Analisis final (Parte 2, perfil y gate Estandar Laboratorio)
+        if: hashFiles('src/main/java/com/universidad/enviosservice/estrategia/**') != ''
+        run: |
+          mkdir -p evidencias/final
+          mvn -B --no-transfer-progress clean verify sonar:sonar -Dsonar.token="$TOKEN_SONAR" 2>&1 | tee evidencias/final/mvn.log
+          bash scripts/sonarqube/esperar-analisis.sh
+          bash .github/evidencias/exportar.sh final
+          cp target/site/jacoco/jacoco.xml evidencias/final/
+          python3 .github/evidencias/terminal.py evidencias/final/mvn.log \
+            "mvn clean verify sonar:sonar  (version refactorizada, GitHub Actions + SonarQube en Docker)" evidencias/final/mvn-sonar.html
+          NODE_PATH=/tmp/pw/node_modules node .github/evidencias/capturar.js final target/site/jacoco
+
+      - name: Publicar en la rama evidencias
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          mkdir -p evidencias && echo "commit=${{ github.sha }}" > evidencias/estado.txt
+          cd evidencias
+          git init -q -b evidencias
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A && git commit -q -m "Evidencias del analisis"
+          git push -f "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git" evidencias
