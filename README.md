@@ -4,14 +4,22 @@ Post-contenido de la unidad 10 de Patrones de Diseño de Software (UDES). Nicol�
 
 `envios-service` calcula el costo de un envío según el método de transporte, el peso, la distancia, la fragilidad y el tipo de cliente. En la Parte 1 el cálculo vivía en un solo método con complejidad ciclomática 20, y la suite de partida cubría apenas el 18,4 % de sus ramas. En la Parte 2 lo refactoricé con Strategy, agregué las pruebas que faltaban, configuré el Quality Profile y el Quality Gate «Estándar Laboratorio», y volví a medir. Todos los números de este README salen de análisis reales de SonarQube y JaCoCo: las capturas están en [`docs/`](docs) y las respuestas originales de la API, en [`docs/analisis`](docs/analisis).
 
+| | Antes | Después |
+|---|---|---|
+| Complejidad ciclomática de `calcularCosto()` | 20 | **5** (75 % menos) |
+| Cobertura de ramas | 18,4 % | **100 %** |
+| Quality Gate «Estándar Laboratorio» | Failed | **Passed** |
+
 ## Contenido
 
 1. [Decisiones de diseño](#decisiones-de-diseño)
 2. [Parte 1: análisis inicial](#parte-1-análisis-inicial)
 3. [Parte 2: refactorización guiada por métricas](#parte-2-refactorización-guiada-por-métricas)
-4. [Capturas](#capturas)
-5. [Inconsistencias del enunciado y cómo las resolví](#inconsistencias-del-enunciado-y-cómo-las-resolví)
-6. [Estructura, ejecución y herramientas](#estructura-ejecución-y-herramientas)
+4. [Comparación antes / después](#comparación-antes--después)
+5. [Capturas](#capturas)
+6. [Inconsistencias del enunciado y cómo las resolví](#inconsistencias-del-enunciado-y-cómo-las-resolví)
+7. [Estructura, ejecución y herramientas](#estructura-ejecución-y-herramientas)
+8. [Conclusiones](#conclusiones)
 
 ## Decisiones de diseño
 
@@ -66,7 +74,7 @@ Los valores límite (exactamente 5 kg, 20 kg, 300 km, 500 km y 5000 km) son los 
 
 ### 6. Realismo del Quality Gate
 
-- **CC máxima de 10 por método.** La Tabla 3.2 de la guía pone 10 como techo del rango «Moderada», y además es el umbral por defecto de la propia regla S1541 en SonarQube (lo confirma la API: parámetro `Threshold`, valor por defecto 10). Con 5 se obligaría a partir métodos que todavía se leen bien, como el orquestador, que quedó en 5. Con 20 el `calcularCosto()` original, que la guía clasifica como «Alta», habría pasado sin aviso.
+- **CC máxima de 10 por método.** La Tabla 3.2 de la guía pone 10 como techo del rango «Moderada», y además es el umbral por defecto de la propia regla S1541 en SonarQube. Con 5 no quedaría margen: el orquestador ya está justo en 5 y cualquier regla nueva obligaría a partirlo aunque todavía se lea bien. Con 20 el `calcularCosto()` original, que la guía clasifica como «Alta», habría pasado sin aviso.
 - **70 % de cobertura y no 100 %.** El 100 % empuja a escribir pruebas triviales solo para llenar el número: la métrica deja de medir calidad y se vuelve la meta. Con 70 % se exige probar lo importante sin obligar a mentir con pruebas vacías. Aquí la cobertura final quedó en 100 % porque cada línea del cálculo es lógica de negocio, no por perseguir la cifra.
 - **New Code Smells mayor que 0 y duplicación mayor que 5 %.** Son las condiciones que convierten la regla S1541 en un bloqueo real para el código nuevo. La de duplicación demostró que no es decorativa: fue la que tumbó el primer intento de la Parte 2.
 
@@ -118,6 +126,20 @@ Según JaCoCo, ningún método supera ahora CC 5: el orquestador queda en 5, `ca
 | Strategy con la clase base por tramos (final) | **0,0 %** | **0** | **100 %** | **Passed** |
 
 **El refactor no cambió el comportamiento.** Además de las 35 pruebas, comparé la versión original y la final del cálculo ejecutándolas lado a lado en 2.400 combinaciones de método de envío (incluido uno no soportado), tipo de cliente, fragilidad, pesos y distancias alrededor de cada límite. Dieron el mismo costo y las mismas excepciones en todas.
+
+## Comparación antes / después
+
+| Métrica | Antes (Parte 1) | Después (Parte 2) |
+|---|---|---|
+| Complejidad ciclomática de `calcularCosto()` | 20 | **5** (75 % menos; la guía pide al menos 50 %) |
+| Complejidad máxima de cualquier método | 20 | **5** |
+| Complejidad cognitiva del proyecto | 32 | **10** |
+| Cobertura de ramas de la lógica de envío | 18,4 % (7 de 38) | **100 %** (20 de 20); suben 81,6 puntos y la guía pide al menos 15 |
+| Cobertura de líneas | 23,8 % | **100 %** |
+| Code Smells | 0 con el perfil por defecto; 1 al activar S1541 | **0** |
+| Duplicación | 0,0 % | **0,0 %** |
+| Pruebas | 2 | **35** |
+| Quality Gate «Estándar Laboratorio» | Failed (cobertura 21,3 %) | **Passed** |
 
 ## Capturas
 
@@ -210,3 +232,7 @@ mvn clean verify sonar:sonar -Dsonar.token=TU_TOKEN
 El reporte de JaCoCo queda en `target/site/jacoco/index.html`.
 
 **Herramientas:** Java 21, Apache Maven, JUnit 5, JaCoCo 0.8.13, SonarQube Community Build 26.11 en Docker, GitHub Actions, Git y GitHub.
+
+## Conclusiones
+
+Lo más valioso fue ver que las métricas no son un adorno del final sino la guía del trabajo: la complejidad de 20 explicaba por sí sola la cobertura tan baja, y bajarla a 5 con Strategy fue lo que volvió posible cubrir el 100 % de las ramas con pruebas que verifican valores reales, no pruebas de relleno. También aprendí que elegir el patrón exige mirar la naturaleza de los condicionales y no solo su cantidad: aquí no había estado ni una cadena de responsables, sino fórmulas intercambiables elegidas una sola vez. El momento más útil fue cuando el Quality Gate falló por duplicación con la implementación de referencia, porque obligó a mejorar el diseño con una clase base en vez de aceptar el número. Por último, comprobé que una herramienta configurada por defecto puede no vigilar nada: con el perfil inicial, un método de complejidad 20 no generaba ni un Code Smell hasta que se activó la regla correcta.
