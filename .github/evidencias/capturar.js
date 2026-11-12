@@ -62,6 +62,11 @@ const paginasJacoco = {
   for (const [nombre, ruta] of vistas[etapa]) {
     await pagina.goto(BASE + ruta, { waitUntil: 'networkidle' });
     await pagina.waitForTimeout(3000);
+    // Cierra el aviso promocional de SonarQube Community Build para que no tape el contenido.
+    for (const boton of await pagina.getByRole('button', { name: 'Dismiss' }).all()) {
+      await boton.click().catch(() => {});
+    }
+    await pagina.waitForTimeout(500);
     await pagina.screenshot({ path: `${salida}/${nombre}.png`, fullPage: true });
   }
   for (const [nombre, archivo] of paginasJacoco[etapa]) {
