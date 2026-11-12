@@ -1,0 +1,30 @@
+{
+    "paging": {
+        "pageIndex": 1,
+        "pageSize": 10,
+        "total": 1
+    },
+    "analyses": [
+        {
+            "key": "fa936b81-0e10-456a-969b-a8ac08f6a2a6",
+            "date": "2026-11-12T06:23:48+0000",
+            "events": [
+                {
+                    "key": "b0ee2e95-80fb-47c0-91c1-b1824879a730",
+                    "category": "SQ_UPGRADE",
+                    "name": "26.11.0.134175"
+                },
+                {
+                    "key": "9546a991-db1e-4f3a-a9a9-412c71785481",
+                    "category": "VERSION",
+                    "name": "1.0"
+                }
+            ],
+            "projectVersion": "1.0",
+            "manualNewCodePeriodBaseline": false,
+            "revision": "6587f8ac263e7843b528a75000f94427cf79fa62",
+            "detectedCI": "Github Actions",
+            "relativePathFromScmRoot": "../../../../../../../tmp/inicial"
+        }
+    ]
+}
