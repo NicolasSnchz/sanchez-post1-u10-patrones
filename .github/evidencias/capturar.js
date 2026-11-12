@@ -32,6 +32,7 @@ const vistas = {
     ['sonar-cobertura-ramas', `/component_measures?id=${e(P)}&metric=branch_coverage&view=list`],
     ['sonar-issues', `/project/issues?id=${e(P)}&resolved=false`],
     ['sonar-proyecto-quality-gate', `/project/quality_gate?id=${e(P)}`],
+    ['sonar-quality-gate', `/quality_gates/show/${e('Estándar Laboratorio')}`],
     ['sonar-proyecto-quality-profile', `/project/quality_profiles?id=${e(P)}`],
   ],
 };

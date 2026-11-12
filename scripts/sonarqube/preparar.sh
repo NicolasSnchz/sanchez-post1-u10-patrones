@@ -20,6 +20,10 @@ api projects/create --data-urlencode "project=$PROYECTO" --data-urlencode "name=
   || echo "El proyecto ya existia"
 
 TOKEN=$(api user_tokens/generate --data-urlencode "name=analisis-$(date +%s)" | jq -r '.token')
-echo "::add-mask::$TOKEN"
-echo "TOKEN_SONAR=$TOKEN" >> "$GITHUB_ENV"
+if [ -n "${GITHUB_ENV:-}" ]; then
+  echo "::add-mask::$TOKEN"
+  echo "TOKEN_SONAR=$TOKEN" >> "$GITHUB_ENV"
+else
+  echo "Token para mvn sonar:sonar -Dsonar.token=...: $TOKEN"
+fi
 echo "Proyecto $PROYECTO creado y token generado"

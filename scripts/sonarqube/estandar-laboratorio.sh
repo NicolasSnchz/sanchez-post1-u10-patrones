@@ -27,6 +27,12 @@ echo "Quality Profile \"$NOMBRE\" asignado con java:S1541 en 10"
 
 # Quality Gate con las tres condiciones de la guia.
 api qualitygates/create --data-urlencode "name=$NOMBRE" >/dev/null
+# Desde SonarQube 10 una puerta nueva nace con las condiciones de "Clean as You Code" (issues nuevos,
+# hotspots revisados, cobertura y duplicacion del codigo nuevo). La guia pide exactamente tres, asi que se quitan.
+for id in $(get "qualitygates/show?name=$(jq -rn --arg n "$NOMBRE" '$n|@uri')" | jq -r '.conditions[].id'); do
+  api qualitygates/delete_condition --data-urlencode "id=$id"
+  echo "Condicion predeterminada $id eliminada"
+done
 condicion() {
   api qualitygates/create_condition --data-urlencode "gateName=$NOMBRE" --data-urlencode "metric=$1" \
     --data-urlencode "op=$2" --data-urlencode "error=$3" >/dev/null
@@ -36,4 +42,5 @@ condicion coverage LT 70                 # Coverage is less than 70 %
 condicion new_code_smells GT 0           # New Code Smells is greater than 0
 condicion duplicated_lines_density GT 5  # Duplicated Lines (%) is greater than 5 %
 api qualitygates/select --data-urlencode "gateName=$NOMBRE" --data-urlencode "projectKey=$PROYECTO"
-echo "Quality Gate \"$NOMBRE\" asignado"
+echo "Quality Gate \"$NOMBRE\" asignado con estas condiciones:"
+get "qualitygates/show?name=$(jq -rn --arg n "$NOMBRE" '$n|@uri')" | jq -r '.conditions[] | "  \(.metric) \(.op) \(.error)"'

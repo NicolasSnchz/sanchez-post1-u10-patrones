@@ -13,6 +13,8 @@ get "measures/component_tree?component=$P&qualifiers=FIL&metricKeys=$M&ps=100" >
 get "issues/search?componentKeys=$P&resolved=false&ps=500" > "$D/issues.json"
 get "qualitygates/project_status?projectKey=$P" > "$D/quality-gate.json"
 get "qualitygates/get_by_project?project=$P" > "$D/quality-gate-asignado.json"
+get "qualitygates/show?name=$(jq -rn --arg n "Estándar Laboratorio" '$n|@uri')" > "$D/quality-gate-condiciones.json" || true
+get "settings/values?keys=sonar.multi-quality-mode.enabled" > "$D/modo.json" || true
 get "qualityprofiles/search?project=$P" > "$D/quality-profile.json"
 get "rules/show?key=java:S1541" > "$D/regla-s1541.json"
 get "project_analyses/search?project=$P&ps=10" > "$D/analisis.json"
