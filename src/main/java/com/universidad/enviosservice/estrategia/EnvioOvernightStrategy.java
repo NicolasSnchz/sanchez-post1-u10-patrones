@@ -1,19 +1,20 @@
 package com.universidad.enviosservice.estrategia;
 
-public class EnvioOvernightStrategy implements EstrategiaEnvio {
+public class EnvioOvernightStrategy extends EstrategiaPorTramos {
+
+    public EnvioOvernightStrategy() {
+        super(2.0, 20, 2.5, 3.0);
+    }
+
     @Override
-    public double calcular(double pesoKg, double distanciaKm) {
+    protected void validarDistancia(double distanciaKm) {
         if (distanciaKm > 300) {
             throw new IllegalArgumentException("OVERNIGHT no disponible para mas de 300 km");
         }
-        double costo;
-        if (pesoKg <= 5) {
-            costo = distanciaKm * 2.0 + 20;
-        } else if (pesoKg <= 20) {
-            costo = distanciaKm * 2.0 + 20 + (pesoKg - 5) * 2.5;
-        } else {
-            costo = distanciaKm * 2.0 + 20 + 15 * 2.5 + (pesoKg - 20) * 3.0;
-        }
+    }
+
+    @Override
+    protected double ajustarPorDistancia(double costo, double distanciaKm) {
         return costo;
     }
 }

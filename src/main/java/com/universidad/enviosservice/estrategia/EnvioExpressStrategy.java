@@ -1,19 +1,14 @@
 package com.universidad.enviosservice.estrategia;
 
-public class EnvioExpressStrategy implements EstrategiaEnvio {
+public class EnvioExpressStrategy extends EstrategiaPorTramos {
+
+    public EnvioExpressStrategy() {
+        super(1.2, 0, 1.5, 2.0);
+    }
+
     @Override
-    public double calcular(double pesoKg, double distanciaKm) {
-        double costo;
-        if (pesoKg <= 5) {
-            costo = distanciaKm * 1.2;
-        } else if (pesoKg <= 20) {
-            costo = distanciaKm * 1.2 + (pesoKg - 5) * 1.5;
-        } else {
-            costo = distanciaKm * 1.2 + 15 * 1.5 + (pesoKg - 20) * 2.0;
-        }
-        if (distanciaKm > 500) {
-            costo += 25;
-        }
-        return costo * 1.3;
+    protected double ajustarPorDistancia(double costo, double distanciaKm) {
+        double conRecargo = distanciaKm > 500 ? costo + 25 : costo;
+        return conRecargo * 1.3;
     }
 }
