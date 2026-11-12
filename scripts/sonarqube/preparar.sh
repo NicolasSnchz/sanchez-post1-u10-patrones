@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Deja listo un SonarQube Community recien levantado en Docker: clave de admin nueva,
-# modo estandar (Code Smells clasicos), proyecto envios-service y un token de analisis.
+# proyecto envios-service y un token de analisis.
 set -euo pipefail
 
 URL="http://localhost:9000"
@@ -12,9 +12,8 @@ curl -sf -u admin:admin -X POST "$URL/api/users/change_password" \
   || echo "La clave de admin ya habia cambiado"
 api() { curl -sf -u "admin:$CLAVE" -X POST "$URL/api/$1" "${@:2}"; }
 
-# Modo estandar: la guia trabaja con Code Smells y New Code Smells, que son las metricas de este modo.
-api settings/set --data-urlencode "key=sonar.multi-quality-mode.enabled" --data-urlencode "value=false" \
-  || echo "Esta version no tiene modo MQR configurable"
+# SonarQube 26.x trabaja en modo MQR (en la interfaz los Code Smells aparecen como issues de
+# Maintainability), pero sigue calculando code_smells y new_code_smells, que son las que usa la guia.
 
 api projects/create --data-urlencode "project=$PROYECTO" --data-urlencode "name=Envios Service" >/dev/null \
   || echo "El proyecto ya existia"
